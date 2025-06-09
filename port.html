@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shrikant's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "Segoe UI", sans-serif;
+      }
+
+      .nav-link {
+        position: relative;
+        transition: color 0.3s;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        height: 2px;
+        width: 0%;
+        background-color: yellow;
+        transition: width 0.3s;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .glass-navbar {
+        backdrop-filter: blur(10px);
+        background-color: rgba(
+          51,
+          65,
+          85,
+          0.7
+        ); /* slate-800 semi-transparent */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      footer {
+        backdrop-filter: blur(10px);
+        background-color: rgba(
+          51,
+          65,
+          85,
+          0.7
+        ); /* slate-800 semi-transparent */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .sun-moon {
+        transition: transform 0.4s ease;
+      }
+
+      .rotate {
+        transform: rotate(180deg);
+      }
+    </style>
+  </head>
+  <body
+    class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100"
+  >
+    <!-- Navbar -->
+    <header
+      class="glass-navbar text-white sticky top-0 z-50 shadow-md transition-all duration-500"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center animate-fade-in-down"
+      >
+        <h1 class="text-2xl md:text-3xl font-bold">🚀 Shrikant</h1>
+        <nav class="space-x-6 flex items-center text-lg font-medium">
+          <a href="#intro" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#stack" class="nav-link">Tech Stack</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <div
+            onclick="toggleDarkMode()"
+            id="modeToggle"
+            class="cursor-pointer text-2xl"
+            aria-label="Toggle dark mode"
+          >
+            <span id="toggleIcon" class="sun-moon">☀️</span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Introduction -->
+    <section
+      id="intro"
+      class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center px-6 py-16 bg-slate-100 dark:bg-slate-800"
+    >
+      <div class="w-full md:w-1/2 text-center md:text-left">
+        <h1 class="text-5xl font-bold mb-4">Hey, I'm Shrikant</h1>
+        <p class="text-xl text-slate-700 dark:text-slate-300">
+          A passionate developer exploring full stack technologies and building
+          real-world projects.
+        </p>
+      </div>
+      <div class="flex items-center  justify-center md:justify-end p-4">
+        <img
+          src="profile.jpg"
+          alt="Shrikant's Profile Picture"
+          class="w-64 h-110 object-cover shadow-lg border-4 border-white dark:border-slate-700 rounded-2xl"
+
+        />
+      </div>
+    </section>
+
+    <!-- About -->
+    <div class="py-20 bg-slate-300 dark:bg-slate-500">
+
+      <section id="about" class=" py-20 bg-slate-300 dark:bg-slate-500">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+          <h2 class="text-4xl font-bold mb-6">About Me</h2>
+          <p class="text-lg">
+            I'm Shrikant, a Full Stack Developer with a strong foundation in Java and
+            modern front-end technologies. I enjoy building efficient,
+            user-friendly web applications and continuously learning new tools to
+            enhance my skills. With hands-on experience in real-world projects, I
+            strive to create impactful solutions that bridge user needs and
+            technical excellence.
+            </p>
+          </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack -->
+    <section id="stack" class="py-20 bg-slate-100 dark:bg-slate-800">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-10">Technology Stack</h2>
+        <div class="grid md:grid-cols-2 gap-10">
+          <!-- Example: HTML5 -->
+          <div
+            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+              alt="HTML5"
+              class="w-10 h-10"
+            />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">HTML5</h3>
+              <p>
+                Building structured, semantic, and accessible content for the
+                web.
+              </p>
+            </div>
+          </div>
+
+          <!-- CSS -->
+          <div
+            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+              alt="CSS3"
+              class="w-10 h-10"
+            />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">CSS3</h3>
+              <p>
+                Styling responsive and interactive web interfaces with
+                animations.
+              </p>
+            </div>
+          </div>
+
+          <!-- JavaScript -->
+          <div
+            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+              alt="JavaScript"
+              class="w-10 h-10"
+            />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">JavaScript</h3>
+              <p>Bringing dynamic behavior and interactivity to web pages.</p>
+            </div>
+          </div>
+
+          <!-- Tailwind & Bootstrap -->
+          <div
+            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
+              alt="Bootstrap"
+              class="w-10 h-10"
+            />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
+              alt="TailwindCSS"
+              class="w-10 h-10"
+            />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">
+                TailwindCSS & Bootstrap
+              </h3>
+              <p>Utility-first and component-based styling frameworks.</p>
+            </div>
+          </div>
+
+          <!-- React & Angular -->
+          <div
+            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+              alt="React"
+              class="w-10 h-10"
+            />
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
+              alt="Angular"
+              class="w-10 h-10"
+            />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">React & Angular</h3>
+              <p>Creating modular and scalable front-end applications.</p>
+            </div>
+          </div>
+
+          <!-- Java Full Stack -->
+          <div
+            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
+          >
+            <img
+              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
+              alt="Java"
+              class="w-10 h-10"
+            />
+            <br />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">Java (Core & Advanced)</h3>
+              <p>
+                OOP-based backend development using Spring, Hibernate, JSP,
+                Servlet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-slate-50 dark:bg-slate-900">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-4xl font-bold text-center mb-10">Projects</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
+            <img src="project1.jpg" alt="Project 1" class="rounded-lg mb-4" />
+            <h3 class="text-xl font-semibold mb-2">Project One</h3>
+            <p>A full-stack web app using React and Spring Boot.</p>
+            <a
+              href="#"
+              class="inline-block mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
+              >Explore</a
+            >
+          </div>
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
+            <img src="project2.jpg" alt="Project 2" class="rounded-lg mb-4" />
+            <h3 class="text-xl font-semibold mb-2">Project Two</h3>
+            <p>Weather app using JavaScript and OpenWeather API.</p>
+            <a
+              href="#"
+              class="inline-block mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
+              >Explore</a
+            >
+          </div>
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
+            <img src="project3.jpg" alt="Project 3" class="rounded-lg mb-4" />
+            <h3 class="text-xl font-semibold mb-2">Project Three</h3>
+            <p>Portfolio website built with HTML, CSS, and JavaScript.</p>
+            <a
+              href="#"
+              class="inline-block mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
+              >Explore</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-RXf+QSDCUQs6f6xG1h+q4WxRGMN2Q4H6osK5Dd5p+4lKZoAKhZ4kgzz0ZrZLvU4fVhZDd/3jogFqqD3zjmyRLg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<footer class="bg-[rgba(51,65,85,0.7)] dark:bg-slate-800 text-white py-10 font-sans">
+  <div class="flex flex-col md:flex-row justify-center items-center max-w-6xl mx-auto text-center md:text-center space-y-8 md:space-y-0 md:space-x-10">
+    <!-- Quick Links -->
+    <div class="flex-1 min-w-[200px]">
+      <h3 class="text-yellow-400 mb-4 text-lg font-bold">Quick Links</h3>
+      <ul class="space-y-2">
+        <li><a href="#intro" class="hover:underline">Home</a></li>
+        <li><a href="#about" class="hover:underline">About</a></li>
+        <li><a href="#stack" class="hover:underline">Skills</a></li>
+        <li><a href="#project" class="hover:underline">Project</a></li>
+        <li><a href="#contact" class="hover:underline">Contact</a></li>
+        <li><a href="#resume" class="hover:underline">Resume</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div class="flex-1 min-w-[250px]">
+      <h3 class="text-yellow-400 mb-4 text-lg font-bold">Contact</h3>
+      <p class="mb-2">
+        <i class="fas fa-map-marker-alt mr-2"></i>
+        <strong>Pune, Maharashtra, India</strong>
+      </p>
+      <p>
+        <i class="fas fa-envelope mr-2"></i>
+        <a href="mailto:work.shrikant5566@email.com" class="text-yellow-400 hover:underline">work.shrikant5566@email.com</a>
+      </p>
+    </div>
+
+    <!-- Social Media -->
+   <!-- Social Media -->
+<div class="flex-1 min-w-[150px] flex flex-col items-center">
+  <h3 class="text-yellow-400 mb-4 text-lg font-bold">Follow Me</h3>
+  <div class="flex space-x-4 text-2xl">
+    <a href="https://www.linkedin.com/in/shrikant-dumpalwar%E2%81%A9-5984a0216/" target="_blank" class="hover:text-yellow-400">
+      <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://github.com/yourprofile" target="_blank" class="hover:text-yellow-400">
+      <i class="fab fa-github"></i>
+    </a>
+    <a href="mailto:yourname@email.com" class="hover:text-yellow-400">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+</div>
+
+  </div>
+
+  <hr class="my-8 border-slate-500" />
+  <p class="text-center text-sm">&copy; 2025 Shrikant. All rights reserved.</p>
+</footer>
+
+
+    <!-- Dark Mode Script -->
+    <script>
+      function toggleDarkMode() {
+        const html = document.documentElement;
+        const icon = document.getElementById("toggleIcon");
+        html.classList.toggle("dark");
+
+        if (html.classList.contains("dark")) {
+          icon.textContent = "🌙";
+          icon.classList.add("rotate");
+        } else {
+          icon.textContent = "☀️";
+          icon.classList.remove("rotate");
+        }
+      }
+    </script>
+  </body>
+</html>
