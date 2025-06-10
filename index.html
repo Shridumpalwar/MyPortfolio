@@ -364,6 +364,10 @@
 
     <!-- Dark Mode Script -->
     <script>
+      function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("hidden");
+  }
       function toggleDarkMode() {
         const html = document.documentElement;
         const icon = document.getElementById("toggleIcon");
