@@ -12,18 +12,12 @@
       };
     </script>
     <style>
-      html {
-        scroll-behavior: smooth;
-      }
-      body {
-        font-family: "Segoe UI", sans-serif;
-      }
-
+      html { scroll-behavior: smooth; }
+      body { font-family: "Segoe UI", sans-serif; }
       .nav-link {
         position: relative;
         transition: color 0.3s;
       }
-
       .nav-link::after {
         content: "";
         position: absolute;
@@ -34,345 +28,328 @@
         background-color: yellow;
         transition: width 0.3s;
       }
-
-      .nav-link:hover::after {
-        width: 100%;
-      }
-
-      .glass-navbar {
+      .nav-link:hover::after { width: 100%; }
+      .glass-navbar, footer {
         backdrop-filter: blur(10px);
-        background-color: rgba(
-          51,
-          65,
-          85,
-          0.7
-        ); /* slate-800 semi-transparent */
+        background-color: rgba(51, 65, 85, 0.7);
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       }
-      footer {
-        backdrop-filter: blur(10px);
-        background-color: rgba(
-          51,
-          65,
-          85,
-          0.7
-        ); /* slate-800 semi-transparent */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      }
+      .sun-moon { transition: transform 0.4s ease; }
+      .rotate { transform: rotate(180deg); }
+      .glitch-btn {
+      position: relative;
+      display: inline-block;
+      padding: 10px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      background: black;
+      border: 1px solid rgb(0, 255, 213);
+      box-shadow: 0px 10px 10px -10px rgb(0, 255, 213);
+      text-shadow: 0 0 2px white;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+    }
 
-      .sun-moon {
-        transition: transform 0.4s ease;
-      }
+    .glitch-btn::after {
+      content: 'EXPLORE';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      color: white;
+      clip-path: inset(0);
+      text-shadow:
+        -3px -3px 0px #1df2f0,
+         3px 3px 0px #E94BE8;
+      border: 3px solid rgb(0, 255, 213);
+      opacity: 0;
+      pointer-events: none;
+    }
 
-      .rotate {
-        transform: rotate(180deg);
-      }
+    .glitch-btn:hover::after {
+      animation: glitch_4011 1s infinite;
+      clip-path: inset(0);
+      opacity: 1;
+    }
+
+    .glitch-btn:hover {
+      animation: wobble 0.6s ease-in-out;
+    }
+
+    @keyframes glitch_4011 {
+      0% { clip-path: inset(50% 50% 50% 50%); }
+      10% { clip-path: inset(31% 0 40% 0); }
+      20% { clip-path: inset(94% 0 1% 0); }
+      30% { clip-path: inset(45% 0 46% 0); }
+      40% { clip-path: inset(14% 0 61% 0); }
+      50% { clip-path: inset(71% 0 3% 0); }
+      60% { clip-path: inset(64% 0 14% 0); }
+      70% { clip-path: inset(6% 0 5% 0); }
+      80% { clip-path: inset(95% 0 1% 0); }
+      90% { clip-path: inset(35% 0 25% 0); }
+      100% { clip-path: inset(24% 0 20% 0); }
+    }
+
+    @keyframes wobble {
+      0% { transform: rotate(0deg); }
+      15% { transform: rotate(3deg); }
+      30% { transform: rotate(-3deg); }
+      45% { transform: rotate(2deg); }
+      60% { transform: rotate(-2deg); }
+      75% { transform: rotate(1deg); }
+      100% { transform: rotate(0deg); }
+    }
     </style>
   </head>
-  <body
-    class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100"
-  >
+  <body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
     <!-- Navbar -->
     <header class="glass-navbar text-white sticky top-0 z-50 shadow-md transition-all duration-500">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <h1 class="text-2xl md:text-3xl font-bold">🚀 Shrikant</h1>
-
-    <!-- Hamburger Icon (Mobile) -->
-    <div class="md:hidden">
-      <button onclick="toggleMenu()" class="text-white text-3xl focus:outline-none">
-        <i class="fas fa-bars"></i>
-      </button>
-    </div>
-
-    <!-- Nav Links -->
-    <nav
-      id="navLinks"
-      class="hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 items-center text-lg font-medium absolute md:static top-20 left-0 w-full md:w-auto bg-slate-800 md:bg-transparent p-6 md:p-0 z-50"
-    >
-      <a href="#intro" class="nav-link">Home</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#stack" class="nav-link">Tech Stack</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#contact" class="nav-link">Contact</a>
-      <div
-        onclick="toggleDarkMode()"
-        id="modeToggle"
-        class="cursor-pointer text-2xl"
-        aria-label="Toggle dark mode"
-      >
-        <span id="toggleIcon" class="sun-moon">☀️</span>
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <h1 class="text-2xl md:text-3xl font-bold">🚀 Shrikant</h1>
+        <!-- Hamburger Icon (Mobile) -->
+        <div class="md:hidden">
+          <button onclick="toggleMenu()" class="text-white text-3xl focus:outline-none">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+        <!-- Nav Links -->
+        <nav id="navLinks" class="hidden md:flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 items-center text-lg font-medium absolute md:static top-20 left-0 w-full md:w-auto bg-slate-800 md:bg-transparent p-6 md:p-0 z-50">
+          <a href="#intro" class="nav-link">Home</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#stack" class="nav-link">Tech Stack</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+          <div onclick="toggleDarkMode()" id="modeToggle" class="cursor-pointer text-2xl" aria-label="Toggle dark mode">
+            <span id="toggleIcon" class="sun-moon">☀️</span>
+          </div>
+        </nav>
       </div>
-    </nav>
-  </div>
-</header>
-
+    </header>
 
     <!-- Introduction -->
-    <section
-      id="intro"
-      class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center px-6 py-16 bg-slate-100 dark:bg-slate-800"
-    >
+    <section id="intro" class="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center px-6 py-16 bg-slate-100 dark:bg-slate-800">
       <div class="w-full md:w-1/2 text-center md:text-left">
         <h1 class="text-5xl font-bold mb-4">Hey, I'm Shrikant</h1>
         <p class="text-xl text-slate-700 dark:text-slate-300">
-          A passionate developer exploring full stack technologies and building
-          real-world projects.
+          A passionate developer exploring full stack technologies and building real-world projects.
         </p>
       </div>
-      <div class="flex items-center  justify-center md:justify-end p-4">
-        <img
-          src="profile.jpg"
-          alt="Shrikant's Profile Picture"
-          class="w-64 h-110 object-cover shadow-lg border-4 border-white dark:border-slate-700 rounded-2xl"
-
-        />
+      <div class="flex items-center justify-center md:justify-end p-4">
+        <img src="profile.jpg" alt="Shrikant's Profile Picture" class="w-64 h-110 object-cover shadow-lg border-4 border-white dark:border-slate-700 rounded-2xl" />
       </div>
     </section>
 
     <!-- About -->
-    <div class="py-20 bg-slate-300 dark:bg-slate-500">
-
-      <section id="about" class=" py-20 bg-slate-300 dark:bg-slate-500">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-          <h2 class="text-4xl font-bold mb-6">About Me</h2>
-          <p class="text-lg">
-            I'm Shrikant, a Full Stack Developer with a strong foundation in Java and
-            modern front-end technologies. I enjoy building efficient,
-            user-friendly web applications and continuously learning new tools to
-            enhance my skills. With hands-on experience in real-world projects, I
-            strive to create impactful solutions that bridge user needs and
-            technical excellence.
-            </p>
-          </div>
-        </div>
+    <section id="about" class="py-20 bg-slate-300 dark:bg-slate-500">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold mb-6">About Me</h2>
+        <p class="text-lg text-justify">
+          I am a results-driven Full Stack Developer with hands-on expertise in Java, JavaScript, and modern web technologies. My experience spans frontend frameworks like HTML5, CSS3, Tailwind CSS, Bootstrap, and AngularJS, as well as robust backend solutions using Spring Framework, Spring Boot, Hibernate, and Servlet. I am proficient in managing relational databases such as MySQL and PostgreSQL, and have delivered scalable solutions leveraging tools like WordPress, Adobe Experience Manager, Git, GitHub, and Docker. My strong foundation in core computer science concepts, including Operating Systems and Computer Networks, enables me to architect efficient and secure applications. I am recognized for my communication skills, problem-solving ability, collaborative mindset, and agility in learning new technologies. I am passionate about building impactful digital products that combine technical excellence with seamless user experiences.
+        </p>
+      </div>
     </section>
 
-    <!-- Tech Stack -->
+        <!-- Tech Stack -->
     <section id="stack" class="py-20 bg-slate-100 dark:bg-slate-800">
       <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-4xl font-bold text-center mb-10">Technology Stack</h2>
         <div class="grid md:grid-cols-2 gap-10">
-          <!-- Example: HTML5 -->
-          <div
-            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
-              alt="HTML5"
-              class="w-10 h-10"
-            />
+          <!-- Java -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java" class="w-10 h-10" />
             <div>
-              <h3 class="text-xl font-semibold mb-1">HTML5</h3>
-              <p>
-                Building structured, semantic, and accessible content for the
-                web.
-              </p>
+              <h3 class="text-xl font-semibold mb-1">Java</h3>
+              <p>Robust object-oriented programming for backend and enterprise applications.</p>
             </div>
           </div>
-
-          <!-- CSS -->
-          <div
-            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
-              alt="CSS3"
-              class="w-10 h-10"
-            />
-            <div>
-              <h3 class="text-xl font-semibold mb-1">CSS3</h3>
-              <p>
-                Styling responsive and interactive web interfaces with
-                animations.
-              </p>
-            </div>
-          </div>
-
           <!-- JavaScript -->
-          <div
-            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
-              alt="JavaScript"
-              class="w-10 h-10"
-            />
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-10 h-10" />
             <div>
               <h3 class="text-xl font-semibold mb-1">JavaScript</h3>
-              <p>Bringing dynamic behavior and interactivity to web pages.</p>
+              <p>Dynamic scripting language for interactive and responsive web interfaces.</p>
             </div>
           </div>
-
-          <!-- Tailwind & Bootstrap -->
-          <div
-            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg"
-              alt="Bootstrap"
-              class="w-10 h-10"
-            />
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
-              alt="TailwindCSS"
-              class="w-10 h-10"
-            />
+          <!-- HTML5 -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" class="w-10 h-10" />
             <div>
-              <h3 class="text-xl font-semibold mb-1">
-                TailwindCSS & Bootstrap
-              </h3>
-              <p>Utility-first and component-based styling frameworks.</p>
+              <h3 class="text-xl font-semibold mb-1">HTML5</h3>
+              <p>Standard markup language for creating structured and accessible web content.</p>
             </div>
           </div>
-
-          <!-- React & Angular -->
-          <div
-            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
-              alt="React"
-              class="w-10 h-10"
-            />
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
-              alt="Angular"
-              class="w-10 h-10"
-            />
+          <!-- CSS3 & Tailwind CSS -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" class="w-10 h-10" />
+            <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="TailwindCSS" class="w-10 h-10" /> -->
             <div>
-              <h3 class="text-xl font-semibold mb-1">React & Angular</h3>
-              <p>Creating modular and scalable front-end applications.</p>
+              <h3 class="text-xl font-semibold mb-1">CSS3 & Tailwind CSS</h3>
+              <p>Modern styling tools for building visually appealing and responsive layouts.</p>
             </div>
           </div>
-
-          <!-- Java Full Stack -->
-          <div
-            class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4"
-          >
-            <img
-              src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg"
-              alt="Java"
-              class="w-10 h-10"
-            />
-            <br />
+          <!-- Bootstrap & AngularJS -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg" alt="Bootstrap" class="w-10 h-10" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg" alt="AngularJS" class="w-10 h-10" />
             <div>
-              <h3 class="text-xl font-semibold mb-1">Java (Core & Advanced)</h3>
-              <p>
-                OOP-based backend development using Spring, Hibernate, JSP,
-                Servlet.
-              </p>
+              <h3 class="text-xl font-semibold mb-1">Bootstrap & AngularJS</h3>
+              <p>Frameworks for rapid UI development and scalable single-page applications.</p>
+            </div>
+          </div>
+          <!-- Spring Framework & Spring Boot -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring" class="w-10 h-10" />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">Spring Framework & Spring Boot</h3>
+              <p>Powerful frameworks for building secure, scalable, and production-ready Java backends.</p>
+            </div>
+          </div>
+          <!-- Hibernate & Servlet -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Hibernate" class="w-10 h-10" />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">Hibernate & Servlet</h3>
+              <p>ORM and server-side technologies for efficient data management and web services.</p>
+            </div>
+          </div>
+          <!-- MySQL & PostgreSQL -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" class="w-10 h-10" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" class="w-10 h-10" />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">MySQL & PostgreSQL</h3>
+              <p>Reliable relational databases for storing and managing application data.</p>
+            </div>
+          </div>
+          <!-- WordPress & Adobe Experience Manager -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-original.svg" alt="WordPress" class="w-10 h-10" />
+            <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/adobe/adobe-original.svg" alt="Adobe Experience Manager" class="w-10 h-10" /> -->
+            <div>
+              <h3 class="text-xl font-semibold mb-1">WordPress & Adobe Experience Manager</h3>
+              <p>Popular tools for content management and enterprise-level web solutions.</p>
+            </div>
+          </div>
+          <!-- Git, GitHub & Docker -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" class="w-10 h-10" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" class="w-10 h-10" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" class="w-10 h-10" />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">Git, GitHub & Docker</h3>
+              <p>Version control and containerization for collaborative and scalable development.</p>
+            </div>
+          </div>
+          <!-- Operating System & Computer Networks -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Operating System" class="w-10 h-10" />
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/networkx/networkx-original.svg" alt="Computer Networks" class="w-10 h-10" />
+            <div>
+              <h3 class="text-xl font-semibold mb-1">Operating System & Computer Networks</h3>
+              <p>Core CS concepts for understanding system internals and network communications.</p>
+            </div>
+          </div>
+          <!-- Soft Skills -->
+          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex items-start gap-4">
+            <!-- <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/communication/communication-original.svg" alt="Soft Skills" class="w-10 h-10" /> -->
+            <div>
+              <h3 class="text-xl font-semibold mb-1">Soft Skills</h3>
+              <p>Strong communication, problem solving, team collaboration, and agility for quick learning.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="py-16 bg-slate-50 dark:bg-slate-900">
-      <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-4xl font-bold text-center mb-10">Projects</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
-            <img src="project1.jpg" alt="Project 1" class="rounded-lg mb-4" />
-            <h3 class="text-xl font-semibold mb-2">Project One</h3>
-            <p>A full-stack web app using React and Spring Boot.</p>
-            <a
-              href="#"
-              class="inline-block mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
-              >Explore</a
-            >
-          </div>
-          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
-            <img src="project2.jpg" alt="Project 2" class="rounded-lg mb-4" />
-            <h3 class="text-xl font-semibold mb-2">Project Two</h3>
-            <p>Weather app using JavaScript and OpenWeather API.</p>
-            <a
-              href="#"
-              class="inline-block mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
-              >Explore</a
-            >
-          </div>
-          <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md">
-            <img src="project3.jpg" alt="Project 3" class="rounded-lg mb-4" />
-            <h3 class="text-xl font-semibold mb-2">Project Three</h3>
-            <p>Portfolio website built with HTML, CSS, and JavaScript.</p>
-            <a
-              href="#"
-              class="inline-block mt-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition"
-              >Explore</a
-            >
-          </div>
+    <!-- Line 202: Project section starts here -->
+
+    <section id="projects" class="py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold text-center mb-10">Projects</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        
+        <!-- Project 1 -->
+        <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex flex-col justify-between items-center text-center">
+          <h3 class="text-xl font-semibold mb-2">Electronics Shop Web Application</h3>
+          <p class="text-justify mb-6">
+            Built a fully customizable e-commerce site for an electronics shop using HTML, CSS, JavaScript, Python, and SQL. Provided advanced admin controls and comprehensive product management features.
+          </p>
+          <a href="#" class="glitch-btn">EXPLORE</a>
         </div>
+
+        <!-- Project 2 -->
+        <div class="bg-white dark:bg-slate-700 p-6 rounded-xl shadow-md flex flex-col justify-between items-center text-center">
+          <h3 class="text-xl font-semibold mb-2">QUIZ-ON (The Quiz Web Application)</h3>
+          <p class="text-justify mb-6">
+            Developed a responsive quiz platform using HTML, CSS, JavaScript, React, Python, and Django. Implemented timed quizzes, instant feedback, detailed score analysis, and certificates to enhance learning.
+          </p>
+          <a href="#" class="glitch-btn">EXPLORE</a>
+        </div>
+
       </div>
-    </section>
+    </div>
+  </section>
 
     <!-- Footer -->
-    <!-- Font Awesome CDN -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-RXf+QSDCUQs6f6xG1h+q4WxRGMN2Q4H6osK5Dd5p+4lKZoAKhZ4kgzz0ZrZLvU4fVhZDd/3jogFqqD3zjmyRLg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<footer class="bg-[rgba(51,65,85,0.7)] dark:bg-slate-800 text-white py-10 font-sans">
-  <div class="flex flex-col md:flex-row justify-center items-center max-w-6xl mx-auto text-center md:text-center space-y-8 md:space-y-0 md:space-x-10">
-    <!-- Quick Links -->
-    <div class="flex-1 min-w-[200px]">
-      <h3 class="text-yellow-400 mb-4 text-lg font-bold">Quick Links</h3>
-      <ul class="space-y-2">
-        <li><a href="#intro" class="hover:underline">Home</a></li>
-        <li><a href="#about" class="hover:underline">About</a></li>
-        <li><a href="#stack" class="hover:underline">Skills</a></li>
-        <li><a href="#project" class="hover:underline">Project</a></li>
-        <li><a href="#contact" class="hover:underline">Contact</a></li>
-        <li><a href="#resume" class="hover:underline">Resume</a></li>
-      </ul>
-    </div>
-
-    <!-- Contact -->
-    <div class="flex-1 min-w-[250px]">
-      <h3 class="text-yellow-400 mb-4 text-lg font-bold">Contact</h3>
-      <p class="mb-2">
-        <i class="fas fa-map-marker-alt mr-2"></i>
-        <strong>Pune, Maharashtra, India</strong>
-      </p>
-      <p>
-        <i class="fas fa-envelope mr-2"></i>
-        <a href="mailto:work.shrikant5566@email.com" class="text-yellow-400 hover:underline">work.shrikant5566@email.com</a>
-      </p>
-    </div>
-
-    <!-- Social Media -->
-   <!-- Social Media -->
-<div class="flex-1 min-w-[150px] flex flex-col items-center">
-  <h3 class="text-yellow-400 mb-4 text-lg font-bold">Follow Me</h3>
-  <div class="flex space-x-4 text-2xl">
-    <a href="https://www.linkedin.com/in/shrikant-dumpalwar%E2%81%A9-5984a0216/" target="_blank" class="hover:text-yellow-400">
-      <i class="fab fa-linkedin"></i>
-    </a>
-    <a href="https://github.com/yourprofile" target="_blank" class="hover:text-yellow-400">
-      <i class="fab fa-github"></i>
-    </a>
-    <a href="mailto:yourname@email.com" class="hover:text-yellow-400">
-      <i class="fas fa-envelope"></i>
-    </a>
-  </div>
-</div>
-
-  </div>
-
-  <hr class="my-8 border-slate-500" />
-  <p class="text-center py-6 text-sm text-slate-300">&copy; 2025 Shrikant. Built with ❤️ using Tailwind CSS. All rights reserved.</p>
-</footer>
-
-
+    <footer class="bg-[rgba(51,65,85,0.7)] dark:bg-slate-800 text-white py-10 font-sans">
+      <div class="flex flex-col md:flex-row justify-center items-center max-w-6xl mx-auto text-center md:text-center space-y-8 md:space-y-0 md:space-x-10">
+        <!-- Quick Links -->
+        <div class="flex-1 min-w-[200px]">
+          <h3 class="text-yellow-400 mb-4 text-lg font-bold">Quick Links</h3>
+          <ul class="space-y-2">
+            <li><a href="#intro" class="hover:underline">Home</a></li>
+            <li><a href="#about" class="hover:underline">About</a></li>
+            <li><a href="#stack" class="hover:underline">Skills</a></li>
+            <li><a href="#projects" class="hover:underline">Projects</a></li>
+            <li><a href="#contact" class="hover:underline">Contact</a></li>
+      <a href="https://drive.google.com/file/d/177DajHrCO7l6I4pnUjwYYMy9ma-PdShm/view?usp=drive_link" class="hover:underline" target="_blank">Resume</a>
+          </ul>
+        </div>
+        <!-- Contact -->
+        <div class="flex-1 min-w-[250px]">
+          <h3 class="text-yellow-400 mb-4 text-lg font-bold">Contact</h3>
+          <p class="mb-2">
+            <i class="fas fa-map-marker-alt mr-2"></i>
+            <strong>Pune, Maharashtra, India</strong>
+          </p>
+          <p>
+            <i class="fas fa-envelope mr-2"></i>
+            <a href="mailto:work.shrikant5566@email.com" class="text-yellow-400 hover:underline">work.shrikant5566@email.com</a>
+          </p>
+        </div>
+        <!-- Social Media -->
+        <div class="flex-1 min-w-[150px] flex flex-col items-center">
+          <h3 class="text-yellow-400 mb-4 text-lg font-bold">Follow Me</h3>
+          <div class="flex space-x-4 text-2xl">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/yourprofile" target="_blank" class="hover:text-yellow-400">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:yourname@email.com" class="hover:text-yellow-400">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <hr class="my-8 border-slate-500" />
+      <p class="text-center py-6 text-sm text-slate-300">&copy; 2025 Shrikant. Built with ❤️ using Tailwind CSS. All rights reserved.</p>
+    </footer>
     <!-- Dark Mode Script -->
     <script>
       function toggleMenu() {
-    const nav = document.getElementById("navLinks");
-    nav.classList.toggle("hidden");
-  }
+        const nav = document.getElementById("navLinks");
+        nav.classList.toggle("hidden");
+      }
       function toggleDarkMode() {
         const html = document.documentElement;
         const icon = document.getElementById("toggleIcon");
         html.classList.toggle("dark");
-
         if (html.classList.contains("dark")) {
           icon.textContent = "🌙";
           icon.classList.add("rotate");
